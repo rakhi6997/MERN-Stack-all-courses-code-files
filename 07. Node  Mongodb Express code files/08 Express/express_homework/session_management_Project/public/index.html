@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>In this project you are suppose to scan the code and answer, rather than code.</h1>
+
+<p>As you gone through the <b>index.js</b> file, you should be able to answer</p>
+
+<dl>
+  <dt><b>About the req.headers.authorization</b></dt>
+  <dd>Q1 : Explain the components of authHeader an object of req.headers.authorization ?</dd>
+  <br />
+  <dt><b>About req.session.user</b></dt>
+  <dd>Q2 : When req.session.user is not set then what does the code do ?</dd>
+</dl>
+
+</body>
+</html>
+
+<!-- 
+
+Answers
+-------
+
+1.  What is an Authorization Request Header?
+( First look at : https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication ), 
+then read answer below
+
+The HTTP Authorization request header contains the 
+credentials to authenticate a user agent with a server.
+APIs use authorization to ensure that client requests access data securely. 
+This can involve authenticating the sender of a request 
+and verifying that they have permission to access or manipulate the relevant data.
+
+Syntax
+Authorization: <type> <credentials>
+type : Basic
+
+<credentials>
+If the "Basic" authentication scheme is used, the credentials are constructed like this:
+The username and the password are combined with a colon (aladdin:opensesame).
+The resulting string is base64 encoded (YWxhZGRpbjpvcGVuc2VzYW1l).
+Note: Base64 encoding does not mean encryption or hashing! This method is equally secure as sending the credentials in clear text (base64 is a reversible encoding). Prefer to use HTTPS in conjunction with Basic Authentication.
+
+Examples
+Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l
+
+2. req.session.user  
+The code prints the Auth header data
+Basic cm9ja3k6YWRtaW4xMjM=
+Error: You are not authenticated
+
+then further shows a pop up box due to this line of code 
+res.setHeader("WWW-Authenticate", "Basic")
+
+On entering some username and password, the code 
+var auth = new Buffer.from(authHeader.split(' ')[1],
+			"base64").toString().split(":")
+accepts the username and password.
+
+if (username == "rocky" && password == "admin123") then a new session object is created.
+			req.session.user = "rockysuven"
+
+On re-running or refereshing the index.html file , 
+no authentication would be needed, due to session file.
+
+
+-->

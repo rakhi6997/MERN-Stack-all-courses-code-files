@@ -1,0 +1,13 @@
+> Change path to "C:\Users\admin\AppData\Local\Android\sdk\tools\bin"
+> cd "C:\Users\admin\AppData\Local\Android\sdk\tools\bin"
+
+Then run 
+> sdkmanager "platforms;android-28" "build-tools;28.0.3"
+
+Then update Android licenses
+> flutter doctor --android-licenses
+
+Then 
+> Install Flutter Plugin 
+> Install Dart Plugin
+
